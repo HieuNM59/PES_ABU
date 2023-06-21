@@ -5,6 +5,7 @@
  *      Author: HieuNM
  */
 #include "stddef.h"
+#include "string.h"
 #include "fifo.h"
 
 #define FALSE 	0

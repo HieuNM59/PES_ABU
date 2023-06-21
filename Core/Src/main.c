@@ -197,7 +197,7 @@ static void MX_USART3_UART_Init(void)
 
   /* USER CODE END USART3_Init 1 */
   huart3.Instance = USART3;
-  huart3.Init.BaudRate = 19200;
+  huart3.Init.BaudRate = 115200;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
@@ -244,22 +244,30 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : INPUT_12_Pin INPUT_11_Pin */
-  GPIO_InitStruct.Pin = INPUT_12_Pin|INPUT_11_Pin;
+  /*Configure GPIO pins : IN1_7_Pin IN1_8_Pin */
+  GPIO_InitStruct.Pin = IN1_7_Pin|IN1_8_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : INPUT_10_Pin INPUT_9_Pin INPUT_8_Pin INPUT_7_Pin
-                           INPUT_6_Pin INPUT_5_Pin INPUT_4_Pin INPUT_3_Pin */
-  GPIO_InitStruct.Pin = INPUT_10_Pin|INPUT_9_Pin|INPUT_8_Pin|INPUT_7_Pin
-                          |INPUT_6_Pin|INPUT_5_Pin|INPUT_4_Pin|INPUT_3_Pin;
+  /*Configure GPIO pins : IN3_1_Pin IN3_2_Pin IN3_3_Pin IN3_4_Pin
+                           IN3_5_Pin IN3_6_Pin IN3_7_Pin IN3_8_Pin
+                           IN2_3_Pin IN2_4_Pin IN2_5_Pin IN2_6_Pin
+                           IN2_7_Pin IN2_8_Pin */
+  GPIO_InitStruct.Pin = IN3_1_Pin|IN3_2_Pin|IN3_3_Pin|IN3_4_Pin
+                          |IN3_5_Pin|IN3_6_Pin|IN3_7_Pin|IN3_8_Pin
+                          |IN2_3_Pin|IN2_4_Pin|IN2_5_Pin|IN2_6_Pin
+                          |IN2_7_Pin|IN2_8_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : INPUT_2_Pin INPUT_1_Pin PES_DATA_Pin INPUT_13_Pin */
-  GPIO_InitStruct.Pin = INPUT_2_Pin|INPUT_1_Pin|PES_DATA_Pin|INPUT_13_Pin;
+  /*Configure GPIO pins : IN2_1_Pin IN2_2_Pin IN1_1_Pin PES_DATA_Pin
+                           IN1_2_Pin IN1_3_Pin IN1_4_Pin IN1_5_Pin
+                           IN1_6_Pin */
+  GPIO_InitStruct.Pin = IN2_1_Pin|IN2_2_Pin|IN1_1_Pin|PES_DATA_Pin
+                          |IN1_2_Pin|IN1_3_Pin|IN1_4_Pin|IN1_5_Pin
+                          |IN1_6_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
