@@ -73,7 +73,7 @@
 #define MAX_BUFF						256
 #define SIZE_OF_PAYLOAD 		8
 #define TIME_POLL_PES				30	//ms
-#define TIME_POLL_MONITOR		100	//ms
+#define TIME_POLL_MONITOR		35//ms
 
 #define TIME_BOUND					5
 #define TIME_SCAN_BUTTON		10 //ms
@@ -113,7 +113,7 @@ static void monitorInit(){
 // Frame = FEE+2col_2Line_1size_2total_string;
 static void pollFifo(void){
 	uint8_t size, colum, line, byTotal;
-	static char data[15] = {0,};
+	static uint8_t data[15] = {0,};
 
 	memset(data, 0, sizeof(data));
 	for(uint8_t i = 0; i < 3; i++){
@@ -309,56 +309,56 @@ void scanInput2(void){
 	uint8_t checkBtn7 = 0;
 	uint8_t checkBtn8 = 0;
 
-	if(!HAL_GPIO_ReadPin(IN1_1_GPIO_Port, IN1_1_Pin)){
+	if(!HAL_GPIO_ReadPin(IN2_1_GPIO_Port, IN2_1_Pin)){
 			checkBtn1++;
 	}
 	else{
 		checkBtn1 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_2_GPIO_Port, IN1_2_Pin)){
+	if(!HAL_GPIO_ReadPin(IN2_2_GPIO_Port, IN2_2_Pin)){
 			checkBtn2++;
 	}
 	else{
 		checkBtn2 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_3_GPIO_Port, IN1_3_Pin)){
+	if(!HAL_GPIO_ReadPin(IN2_3_GPIO_Port, IN2_3_Pin)){
 			checkBtn3++;
 	}
 	else{
 		checkBtn3 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_4_GPIO_Port, IN1_4_Pin)){
+	if(!HAL_GPIO_ReadPin(IN2_4_GPIO_Port, IN2_4_Pin)){
 			checkBtn4++;
 	}
 	else{
 		checkBtn4 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_5_GPIO_Port, IN1_5_Pin)){
+	if(!HAL_GPIO_ReadPin(IN2_5_GPIO_Port, IN2_5_Pin)){
 			checkBtn5++;
 	}
 	else{
 		checkBtn5 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_6_GPIO_Port, IN1_6_Pin)){
+	if(!HAL_GPIO_ReadPin(IN2_6_GPIO_Port, IN2_6_Pin)){
 			checkBtn6++;
 	}
 	else{
 		checkBtn6 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_7_GPIO_Port, IN1_7_Pin)){
+	if(!HAL_GPIO_ReadPin(IN2_7_GPIO_Port, IN2_7_Pin)){
 			checkBtn7++;
 	}
 	else{
 		checkBtn7 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_8_GPIO_Port, IN1_8_Pin)){
+	if(!HAL_GPIO_ReadPin(IN2_8_GPIO_Port, IN2_8_Pin)){
 			checkBtn8++;
 	}
 	else{
@@ -440,56 +440,56 @@ void scanInput3(void){
 	uint8_t checkBtn7 = 0;
 	uint8_t checkBtn8 = 0;
 
-	if(!HAL_GPIO_ReadPin(IN1_1_GPIO_Port, IN1_1_Pin)){
+	if(!HAL_GPIO_ReadPin(IN3_1_GPIO_Port, IN3_1_Pin)){
 			checkBtn1++;
 	}
 	else{
 		checkBtn1 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_2_GPIO_Port, IN1_2_Pin)){
+	if(!HAL_GPIO_ReadPin(IN3_2_GPIO_Port, IN3_2_Pin)){
 			checkBtn2++;
 	}
 	else{
 		checkBtn2 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_3_GPIO_Port, IN1_3_Pin)){
+	if(!HAL_GPIO_ReadPin(IN3_3_GPIO_Port, IN3_3_Pin)){
 			checkBtn3++;
 	}
 	else{
 		checkBtn3 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_4_GPIO_Port, IN1_4_Pin)){
+	if(!HAL_GPIO_ReadPin(IN3_4_GPIO_Port, IN3_4_Pin)){
 			checkBtn4++;
 	}
 	else{
 		checkBtn4 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_5_GPIO_Port, IN1_5_Pin)){
+	if(!HAL_GPIO_ReadPin(IN3_5_GPIO_Port, IN3_5_Pin)){
 			checkBtn5++;
 	}
 	else{
 		checkBtn5 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_6_GPIO_Port, IN1_6_Pin)){
+	if(!HAL_GPIO_ReadPin(IN3_6_GPIO_Port, IN3_6_Pin)){
 			checkBtn6++;
 	}
 	else{
 		checkBtn6 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_7_GPIO_Port, IN1_7_Pin)){
+	if(!HAL_GPIO_ReadPin(IN3_7_GPIO_Port, IN3_7_Pin)){
 			checkBtn7++;
 	}
 	else{
 		checkBtn7 = 0;
 	}
 
-	if(!HAL_GPIO_ReadPin(IN1_8_GPIO_Port, IN1_8_Pin)){
+	if(!HAL_GPIO_ReadPin(IN3_8_GPIO_Port, IN3_8_Pin)){
 			checkBtn8++;
 	}
 	else{
@@ -626,7 +626,7 @@ void main_process(void){
 		ticksPollPes = HAL_GetTick();
 	}
 
-	if(HAL_GetTick - ticksPollMonitor >= TIME_POLL_MONITOR){
+	if(HAL_GetTick() - ticksPollMonitor >= TIME_POLL_MONITOR){
 		pollFifo();
 		ticksPollMonitor = HAL_GetTick();
 	}
